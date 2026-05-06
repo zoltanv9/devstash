@@ -16,4 +16,4 @@
 
 ## History
 
-<!-- Keep this updated. Earliest to latest. -->
+- 2026-05-06 — Initial Next.js and Tailwind setup (`abb7722`).
