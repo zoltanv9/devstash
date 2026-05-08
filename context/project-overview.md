@@ -426,6 +426,12 @@ Payments handled by **Stripe** via `stripeCustomerId` and `stripeSubscriptionId`
 - Toast notifications for create / update / delete
 - Loading skeletons while data fetches
 
+### Screenshots
+
+Refer the screenshots the the below folder as base for the dashboard UI. It does not have to be exact. Use as it as reference:
+
+- @context/screenshots/ 
+
 ---
 
 ## 10. Project Structure
