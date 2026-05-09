@@ -36,15 +36,25 @@ import {
 } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 
-const ICON_MAP: Record<string, LucideIcon> = {
-  Code,
-  Sparkles,
-  Terminal,
-  StickyNote,
-  File,
-  Image: ImageIcon,
-  Link: LinkIcon,
-};
+function typeIcon(icon: string): LucideIcon {
+  switch (icon) {
+    case "Code":
+      return Code;
+    case "Sparkles":
+      return Sparkles;
+    case "Terminal":
+      return Terminal;
+    case "StickyNote":
+      return StickyNote;
+    case "Image":
+      return ImageIcon;
+    case "Link":
+      return LinkIcon;
+    case "File":
+    default:
+      return File;
+  }
+}
 
 function pluralSlug(typeName: string) {
   return `${typeName.toLowerCase()}s`;
@@ -117,7 +127,6 @@ export function SidebarContent() {
             </CollapsibleTrigger>
             <CollapsibleContent className="mt-1 space-y-0.5">
               {mockItemTypes.map((type) => {
-                const Icon = ICON_MAP[type.icon] ?? File;
                 const count =
                   mockItemTypeCounts.byType[
                     type.id as keyof typeof mockItemTypeCounts.byType
@@ -126,7 +135,7 @@ export function SidebarContent() {
                   <SidebarLink
                     key={type.id}
                     href={`/items/${pluralSlug(type.name)}`}
-                    icon={Icon}
+                    icon={typeIcon(type.icon)}
                     iconColor={type.color}
                     label={`${type.name}s`}
                     count={count}
@@ -154,12 +163,11 @@ export function SidebarContent() {
                 const type = mockItemTypes.find(
                   (t) => t.id === col.defaultTypeId,
                 );
-                const Icon = type ? ICON_MAP[type.icon] ?? File : File;
                 return (
                   <SidebarLink
                     key={col.id}
                     href={`/collections/${col.id}`}
-                    icon={Icon}
+                    icon={typeIcon(type?.icon ?? "File")}
                     iconColor={type?.color}
                     label={col.name}
                     trailing={
