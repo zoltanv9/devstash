@@ -1,13 +1,19 @@
 import { FolderOpen, Plus, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { SidebarToggle } from "./SidebarToggle";
 
 export function TopBar() {
   return (
-    <header className="flex h-14 items-center gap-4 border-b border-border bg-background px-4">
+    <header className="flex h-14 shrink-0 items-center gap-2 border-b border-border bg-background px-4">
       <div className="flex flex-1 items-center gap-2">
-        <FolderOpen className="h-6 w-6 text-primary" />
-        <span className="text-base font-semibold tracking-tight">DevStash</span>
+        <SidebarToggle />
+        <div className="hidden items-center gap-2 md:flex">
+          <FolderOpen className="h-6 w-6 text-primary" />
+          <span className="text-base font-semibold tracking-tight">
+            DevStash
+          </span>
+        </div>
       </div>
 
       <div className="flex flex-1 justify-center">
@@ -22,13 +28,13 @@ export function TopBar() {
       </div>
 
       <div className="flex flex-1 items-center justify-end gap-2">
-        <Button variant="outline" size="sm">
+        <Button variant="outline" size="sm" className="hidden md:inline-flex">
           <Plus className="size-4" />
           New Collection
         </Button>
         <Button size="sm">
           <Plus className="size-4" />
-          New Item
+          <span className="hidden sm:inline">New Item</span>
         </Button>
       </div>
     </header>
